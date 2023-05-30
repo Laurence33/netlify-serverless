@@ -1,9 +1,10 @@
-const fetch = require('node-fetch');
+const { default: axios } = require('axios');
+
 exports.handler = async () => {
   const POKE_API = 'https://pokeapi.co/api/v2/pokedex/kanto';
 
-  const response = await fetch(POKE_API);
-  const data = await response.json();
+  const response = await axios(POKE_API);
+  const data = await response.data;
   console.log(data);
   return {
     statusCode: 200,
